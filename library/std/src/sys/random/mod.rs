@@ -39,10 +39,13 @@ cfg_if::cfg_if! {
         // FIXME: add arc4random_buf to shim-3ds
         mod horizon;
         pub use horizon::fill_bytes;
-    } else if #[cfg(any(
+    } else if #[cfg(target_os = "l4re")] {
+        mod l4re;
+        pub use l4re::fill_bytes;
+    }
+    else if #[cfg(any(
         target_os = "aix",
         target_os = "hurd",
-        target_os = "l4re",
         target_os = "nto",
         target_os = "nuttx",
     ))] {
