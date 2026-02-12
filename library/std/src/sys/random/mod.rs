@@ -42,15 +42,18 @@ cfg_if::cfg_if! {
     } else if #[cfg(target_os = "l4re")] {
         mod l4re;
         pub use l4re::fill_bytes;
-    }
-    else if #[cfg(any(
-        target_os = "aix",
-        target_os = "hurd",
-        target_os = "nto",
-        target_os = "nuttx",
-    ))] {
-        mod unix_legacy;
-        pub use unix_legacy::fill_bytes;
+    } else if #[cfg(target_os = "aix")] {
+        mod aix;
+        pub use aix::fill_bytes;
+    } else if #[cfg(target_os = "hurd")] {
+        mod hurd;
+        pub use hurd::fill_bytes;
+    } else if #[cfg(target_os = "nto")] {
+        mod nto;
+        pub use nto::fill_bytes;
+    } else if #[cfg(target_os = "nuttx")] {
+        mod nuttx;
+        pub use nuttx::fill_bytes;
     } else if #[cfg(target_os = "redox")] {
         mod redox;
         pub use redox::fill_bytes;

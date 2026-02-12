@@ -10,16 +10,10 @@ use crate::fs::File;
 use crate::io::Read;
 use crate::sync::OnceLock;
 
-static DEVICE: OnceLock<File> = OnceLock::new();
-
 pub fn fill_bytes(bytes: &mut [u8]) {
-    println!("Called from file: {} (line {})", file!(), line!());
-    /*
+    println!("@MS fill_bytes called aix");
+    // fill the buffer with some dummy data for testing
+    for (i, byte) in bytes.iter_mut().enumerate() {
+        *byte = (i % 256) as u8;
 
-
-     */
-    DEVICE
-        .get_or_try_init(|| File::open("/dev/urandom"))
-        .and_then(|mut dev| dev.read_exact(bytes))
-        .expect("failed to generate random data");
 }
