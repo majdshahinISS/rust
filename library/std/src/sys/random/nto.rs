@@ -14,5 +14,5 @@ pub fn fill_bytes(bytes: &mut [u8]) {
     // fill the buffer with some dummy data for testing
     for (i, byte) in bytes.iter_mut().enumerate() {
         *byte = (i % 256) as u8;
-
+    }
 }
