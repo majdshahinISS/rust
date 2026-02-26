@@ -39,7 +39,7 @@ test = false
 # otherwise, some targets will fail. That's why these dependencies are explicitly pinned.
 #
 # Do not upgrade this crate unless https://github.com/rust-lang/cc-rs/issues/1317 is fixed.
-cc = "=1.1.22"
+cc = { path = "cc-rs" }
 cmake = "=0.1.48"
 
 build_helper = { path = "../build_helper" }
